@@ -1,0 +1,18 @@
+package com.maxeagan;
+
+import java.util.Date;
+
+public class Block {
+
+    public String hash;
+    public String previousHash;
+    private String data; // Data will be a simple message.
+    private long timeStamp; // Number of milliseceonds since 1/1/1970
+
+    // Block constructor
+    public Block (String hash, String previousHash){
+        this.hash = hash;
+        this.previousHash = previousHash;
+        this.timeStamp = new Date().getTime();
+    }
+}
