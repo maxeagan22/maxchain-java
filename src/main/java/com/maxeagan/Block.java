@@ -9,7 +9,11 @@ public class Block {
     private String data; // Data will be a simple message.
     private long timeStamp; // Number of milliseceonds since 1/1/1970
 
-    // Block constructor
+    /*
+        Block constructor
+        String hash will store digital signature
+        previousHash will hold the previous block's hash
+     */
     public Block (String hash, String previousHash){
         this.hash = hash;
         this.previousHash = previousHash;
