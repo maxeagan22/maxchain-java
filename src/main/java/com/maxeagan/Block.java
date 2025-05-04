@@ -14,8 +14,8 @@ public class Block {
         String hash will store digital signature
         previousHash will hold the previous block's hash
      */
-    public Block (String hash, String previousHash){
-        this.hash = hash;
+    public Block (String data, String previousHash){
+        this.data = data;
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
         this.hash = calculateHash();
