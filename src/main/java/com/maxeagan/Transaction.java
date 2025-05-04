@@ -30,7 +30,11 @@ public class Transaction {
      */
     private String calculateHash(){
         sequence++; // increase sequence to avoid transactions with the same hash
-        //return StringUtil.applySha256()
+        return StringUtil.applySha256(
+                StringUtil.getStringFromKey(sender) +
+                StringUtil.getStringFromKey(recipient) +
+                Float.toString(value) + sequence
+        );
     }
 
 }
