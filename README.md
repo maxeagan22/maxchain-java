@@ -22,7 +22,7 @@
 
 ## Requirements
 
-- Java 8 or higher  
+- Java (I used java 23) 
 - [Gson](https://github.com/google/gson) (for JSON serialization)  
 - [Bouncy Castle](https://www.bouncycastle.org/java.html) (for cryptography support)
 
