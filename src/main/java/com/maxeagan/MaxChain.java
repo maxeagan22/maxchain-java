@@ -2,13 +2,18 @@ package com.maxeagan;
 
 import java.security.Security;
 import java.util.ArrayList;
-import com.google.gson.GsonBuilder;
+import java.util.HashMap;
 
-public class Main {
+public class MaxChain {
 
     // Create an arraylist to store our blockchain
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
+
+    //List of all unspent transactions
+    public static HashMap<String, TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();
+
     public static int difficulty = 5;
+    public static float minimumTransaction = 0.1f;
     public static Wallet walletA;
     public static Wallet walletB;
 
