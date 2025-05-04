@@ -7,12 +7,23 @@ public class Main {
 
     // Create an arraylist to store our blockchain
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
+    public static int difficulty = 5;
 
     public static void main (String[] args) {
         // Add blocks to arraylist
         blockchain.add(new Block("First block", "0"));
+        System.out.println("Trying to mine block 1....");
+        blockchain.get(0).mineBlock(difficulty);
+
         blockchain.add(new Block("Second block", blockchain.getLast().hash));
+        System.out.println("Trying to mine block 2...");
+        blockchain.get(1).mineBlock(difficulty);
+
         blockchain.add(new Block("Third block", blockchain.getLast().hash));
+        System.out.println("Trying to mine block 3....");
+        blockchain.get(2).mineBlock(difficulty);
+
+        System.out.println("\nBlockchain is valid: " + isChainValid());
 
         // Print our blocks in json
         String blockChainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
@@ -30,14 +41,14 @@ public class Main {
         Block previousBlock;
 
         // Loop through the blockchain and check hashes
-        for (int i = 0; i < blockchain.size(); i++ ){
+        for (int i = 1; i < blockchain.size(); i++ ){
             currentBlock = blockchain.get(i);
-            previousBlock = blockchain.get(i - 1);
+            previousBlock = blockchain.get(i-1);
 
             // Compare registered hash and calculated hash
             if (!currentBlock.hash.equals(currentBlock.calculateHash())){
                 System.out.println("Current hashes are not equal");
-                return false
+                return false;
             }
 
             // compare previous hash and registered previous hash

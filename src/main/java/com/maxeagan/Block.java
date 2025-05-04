@@ -8,6 +8,7 @@ public class Block {
     public String previousHash;
     private String data; // Data will be a simple message.
     private long timeStamp; // Number of milliseceonds since 1/1/1970
+    private int nonce;
 
     /*
         Block constructor
@@ -18,6 +19,7 @@ public class Block {
         this.data = data;
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
+
         this.hash = calculateHash();
     }
 
@@ -29,6 +31,11 @@ public class Block {
                             data
                             );
         return calculatedHash;
+    }
+
+    public void mineBlock(int difficulty){
+        // Create string with difficulty * 0
+        String target = new String(new char[difficulty]).replace('\0', '0');
     }
 
 }
