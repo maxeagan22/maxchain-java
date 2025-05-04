@@ -33,7 +33,7 @@ Clone the repo:
 
 ```bash
 git clone https://github.com/maxeagan22/maxchain-java.git
-cd maxchain-java
+cd maxchain-java```
 
 
 ## License
