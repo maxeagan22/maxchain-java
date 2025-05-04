@@ -1,7 +1,6 @@
 # MaxChain
 
-**MaxChain** is a simple Java-based blockchain implementation. It’s built for educational purposes and covers core blockchain mechanics: blocks, transactions, Merkle trees, digital signatures, and proof-of-work.
-
+**MaxChain** is a simple Java-based blockchain implementation.
 ## Features
 
 - Block creation and mining
@@ -14,12 +13,12 @@
 
 ## Project Structure
 
-- `Block.java` – Defines the structure and mining of a block  
-- `Transaction.java` – Handles transaction creation, signing, and verification  
-- `Wallet.java` – Manages key generation and sending funds  
-- `TransactionInput.java` / `TransactionOutput.java` – Handle inputs and outputs for the UTXO model  
-- `StringUtil.java` – Utility functions for hashing, key conversion, and signatures  
-- `MaxChain.java` – Main runner for initializing and demonstrating the blockchain
+- `Block.java` – Defines the structure and mining of a block.
+- `Transaction.java` – Handles transaction creation, signing, and verification.
+- `Wallet.java` – Manages key generation and sending funds.
+- `TransactionInput.java` / `TransactionOutput.java` – Handle inputs and outputs for the UTXO model.
+- `StringUtil.java` – Utility functions for hashing, key conversion, and signatures. 
+- `MaxChain.java` – Main runner for initializing and demonstrating the blockchain.
 
 ## Requirements
 
