@@ -1,5 +1,6 @@
 package com.maxeagan;
 
+import java.security.Security;
 import java.util.ArrayList;
 import com.google.gson.GsonBuilder;
 
@@ -8,27 +9,29 @@ public class Main {
     // Create an arraylist to store our blockchain
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
     public static int difficulty = 5;
+    public static Wallet walletA;
+    public static Wallet walletB;
 
     public static void main (String[] args) {
-        // Add blocks to arraylist
-        blockchain.add(new Block("First block", "0"));
-        System.out.println("Trying to mine block 1....");
-        blockchain.get(0).mineBlock(difficulty);
+        // Setup bouncy castle as our security provider
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-        blockchain.add(new Block("Second block", blockchain.getLast().hash));
-        System.out.println("Trying to mine block 2...");
-        blockchain.get(1).mineBlock(difficulty);
+        // Create the new wallets
+        walletA = new Wallet();
+        walletB = new Wallet();
 
-        blockchain.add(new Block("Third block", blockchain.getLast().hash));
-        System.out.println("Trying to mine block 3....");
-        blockchain.get(2).mineBlock(difficulty);
+        // Test public and private keys
+        System.out.println("Private and public keys:");
+        System.out.println(StringUtil.getStringFromKey(walletA.privateKey));
+        System.out.println(StringUtil.getStringFromKey(walletA.publicKey));
 
-        System.out.println("\nBlockchain is valid: " + isChainValid());
+        // Test transaction from walletA to walletB
+        Transaction transaction = new Transaction(walletA.publicKey, walletB.publicKey, 5, null);
+        transaction.generateSignature(walletA.privateKey);
 
-        // Print our blocks in json
-        String blockChainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
-        System.out.println(blockChainJson);
-
+        // verify the signature works and verify it from the public key
+        System.out.println("Is signature verified?");
+        System.out.println(transaction.verifySignature());
     }
 
     /*
